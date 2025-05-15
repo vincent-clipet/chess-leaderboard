@@ -18,7 +18,7 @@ for (const p of config.players_names) {
   players.push(new Player(name, current_rating, best_rating, win, lose, draw));
 }
 
-players.sort((a, b) => b.rating - a.rating);
+players.sort((a, b) => b.current_rating - a.current_rating);
 for (let rank = 1; rank <= players.length; rank++) {
   players[rank - 1].rank = rank;
 }

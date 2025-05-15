@@ -17,7 +17,8 @@ class Player {
         this.win = win;
         this.lose = lose;
         this.draw = draw;
-        this.ratio_wl = (100 * win / (win+lose)).toFixed(0);
+        this.ratio_wl = Number((100 * win / (win+lose)).toFixed(0));
+        this.rank = null;
     }
 };
 
