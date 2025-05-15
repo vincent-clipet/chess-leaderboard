@@ -1,22 +1,29 @@
 <script setup lang="ts">
-import HelloWorld from './components/HelloWorld.vue'
+import PlayerTable from "@/components/PlayerTable.vue";
+import config from "../config.json"
 </script>
 
 <template>
-  <HelloWorld msg="Vite + Vue" />
+  <h1 id="header">{{ config.header_text }}</h1>
+  <hr class="text-orange-500">
+
+  <Suspense>
+    <div id="players_table">
+      <PlayerTable></PlayerTable>
+    </div>
+  </Suspense>
+
 </template>
 
 <style scoped>
-.logo {
-  height: 6em;
-  padding: 1.5em;
-  will-change: filter;
-  transition: filter 300ms;
+#players_table {
+  margin-top: 60px;
 }
-.logo:hover {
-  filter: drop-shadow(0 0 2em #646cffaa);
-}
-.logo.vue:hover {
-  filter: drop-shadow(0 0 2em #42b883aa);
+
+#header {
+  text-align: center;
+  margin-top: 30px;
+  font-weight: bold;
+  font-size: 1.6rem;
 }
 </style>
