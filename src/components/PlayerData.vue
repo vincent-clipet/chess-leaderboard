@@ -1,12 +1,17 @@
 <script setup lang="ts">
 import Player from "../types/Player.ts"
-import config from "../../config.json"
 import PlayerTable from "@/components/PlayerTable.vue";
 import {Tabs, TabsContent, TabsList, TabsTrigger,} from '@/components/ui/tabs'
 
 const players: Player[] = [];
+const player_names = [
+  ["totoalamer", "Mathieu"],
+  ["vince_f4e", "Vincent"],
+  ["trouducchess", "Maxime"],
+  ["xabroa2", "Xavier"]
+];
 
-for (const p of config.players_names) {
+for (const p of player_names) {
   const account = p[0];
   const name = p[1];
   const api_data = await (await fetch(`https://api.chess.com/pub/player/${account}/stats`)).json();

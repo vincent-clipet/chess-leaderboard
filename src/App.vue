@@ -1,10 +1,9 @@
 <script setup lang="ts">
-import config from "../config.json"
 import PlayerData from "@/components/PlayerData.vue";
 </script>
 
 <template>
-  <h1 id="header">{{ config.header_text }}</h1>
+  <h1 id="header">Leaderboard échecs A2SI</h1>
   <hr class="text-orange-500">
 
   <Suspense>
