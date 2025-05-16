@@ -11,7 +11,8 @@ const player_names = [
   ["xabroa2", "Xavier"],
   ["thomas-caloin", "Thomas"],
   ["felixscout", "Félix"],
-  ["constaaaaaaant", "Constant"]
+  ["constaaaaaaant", "Constant"],
+  ["lucas59176800", "Lucas"],
 ];
 
 for (const p of player_names) {
