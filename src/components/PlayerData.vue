@@ -8,7 +8,9 @@ const player_names = [
   ["totoalamer", "Mathieu"],
   ["vince_f4e", "Vincent"],
   ["trouducchess", "Maxime"],
-  ["xabroa2", "Xavier"]
+  ["xabroa2", "Xavier"],
+  ["thomas-caloin", "Thomas"],
+  ["felixscout", "Félix"],
 ];
 
 for (const p of player_names) {
