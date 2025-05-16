@@ -1,13 +1,9 @@
 {
   "players_names": [
-    [
-      "totoalamer",
-      "Mathieu"
-    ],
-    [
-      "vince_f4e",
-      "Vincent"
-    ]
+    ["totoalamer", "Mathieu"],
+    ["vince_f4e", "Vincent"],
+    ["trouducchess", "Maxime"],
+    ["xabroa2", "Xavier"]
   ],
   "header_text": "Leaderboard échecs A2SI"
 }
