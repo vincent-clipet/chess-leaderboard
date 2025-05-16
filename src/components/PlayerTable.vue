@@ -11,7 +11,8 @@ for (const p of config.players_names) {
   const name = p[1];
   const api_data = await (await fetch(`https://api.chess.com/pub/player/${account}/stats`)).json();
   const current_rating = api_data.chess_rapid.last.rating;
-  const best_rating = api_data.chess_rapid.best.rating;
+  const best_rating = api_data.chess_rapid?.best?.rating || api_data.chess_bullet?.best?.rating;
+
   const win = api_data.chess_rapid?.record?.win || api_data.chess_bullet?.record?.win;
   const lose = api_data.chess_rapid?.record?.loss || api_data.chess_bullet?.record?.loss;
   const draw = api_data.chess_rapid?.record?.draw || api_data.chess_bullet?.record?.draw;
