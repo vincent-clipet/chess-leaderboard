@@ -34,6 +34,13 @@ for (let rank = 1; rank <= players_bullet.length; rank++) {
   players_bullet[rank - 1].bullet.rank = rank;
 }
 
+// Sorting for Blitz mode
+const players_blitz = [...players].filter(e => e.blitz.win !== 0 || e.blitz.lose !== 0 || e.blitz.draw !== 0);
+players_blitz.sort((a, b) => b.blitz.current_rating - a.blitz.current_rating);
+for (let rank = 1; rank <= players_blitz.length; rank++) {
+  players_blitz[rank - 1].blitz.rank = rank;
+}
+
 // Sorting for Best overall
 const players_best = [...players].filter(e => e.best.win !== 0 || e.best.lose !== 0 || e.best.draw !== 0);
 players_best.sort((a, b) => b.best.current_rating - a.best.current_rating);
@@ -46,10 +53,11 @@ for (let rank = 1; rank <= players_best.length; rank++) {
 <template>
   <Tabs default-value="best">
 
-    <TabsList id="tabs_list" class="grid w-full grid-cols-3">
+    <TabsList id="tabs_list" class="grid w-full grid-cols-4">
       <TabsTrigger value="best">Global</TabsTrigger>
       <TabsTrigger value="rapid">Rapid</TabsTrigger>
       <TabsTrigger value="bullet">Bullet</TabsTrigger>
+      <TabsTrigger value="blitz">Blitz</TabsTrigger>
     </TabsList>
 
     <TabsContent value="best">
@@ -65,6 +73,11 @@ for (let rank = 1; rank <= players_best.length; rank++) {
     <TabsContent value="bullet">
       <div class="players_table">
         <PlayerTable :table_data="players_bullet.map(e => e.bullet)"></PlayerTable>
+      </div>
+    </TabsContent>
+    <TabsContent value="blitz">
+      <div class="players_table">
+        <PlayerTable :table_data="players_blitz.map(e => e.blitz)"></PlayerTable>
       </div>
     </TabsContent>
 
