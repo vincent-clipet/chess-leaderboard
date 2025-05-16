@@ -1,36 +1,17 @@
 <script setup lang="ts">
-import Player from "../types/Player.ts"
-import config from "../../config.json"
 import {Table, TableBody, TableCell, TableHead, TableHeader, TableRow} from "@/components/ui/table";
+import type PlayerStats from "@/types/PlayerStats.ts";
 
-
-const players: Player[] = [];
-
-for (const p of config.players_names) {
-  const account = p[0];
-  const name = p[1];
-  const api_data = await (await fetch(`https://api.chess.com/pub/player/${account}/stats`)).json();
-  const current_rating = api_data.chess_rapid.last.rating;
-  const best_rating = api_data.chess_rapid?.best?.rating || api_data.chess_bullet?.best?.rating;
-
-  const win = api_data.chess_rapid?.record?.win || api_data.chess_bullet?.record?.win;
-  const lose = api_data.chess_rapid?.record?.loss || api_data.chess_bullet?.record?.loss;
-  const draw = api_data.chess_rapid?.record?.draw || api_data.chess_bullet?.record?.draw;
-  players.push(new Player(name, current_rating, best_rating, win, lose, draw));
-}
-
-players.sort((a, b) => b.current_rating - a.current_rating);
-for (let rank = 1; rank <= players.length; rank++) {
-  players[rank - 1].rank = rank;
-}
-
-console.log(players);
+defineProps<{
+  table_data: PlayerStats[],
+}>();
 
 </script>
 
 
 <template>
   <Table>
+
     <TableHeader>
       <TableRow class="text-xl">
         <TableHead class="text-center">Rang</TableHead>
@@ -43,15 +24,16 @@ console.log(players);
         <TableHead class="text-center">Ratio W/L</TableHead>
       </TableRow>
     </TableHeader>
-    <TableBody>
 
-      <TableRow v-for="player in players" class="text-lg">
+    <TableBody>
+      <TableRow v-for="player in table_data" class="text-lg">
         <TableCell class="text-center">{{ player.rank }}</TableCell>
         <TableCell class="text-center text-blue-400">{{ player.name }}</TableCell>
         <TableCell class="text-center font-bold text-orange-400">{{ player.current_rating }}</TableCell>
         <TableCell class="text-center">
           <span> {{ player.best_rating }}</span>
-          (<span v-if="player.current_rating < player.best_rating" class="text-red-500">{{player.current_rating-player.best_rating}}</span>
+          (<span v-if="player.current_rating < player.best_rating"
+                 class="text-red-500">{{ player.current_rating - player.best_rating }}</span>
           <span v-else class="text-green-500">=</span>)
 
         </TableCell>

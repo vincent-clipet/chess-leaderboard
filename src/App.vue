@@ -1,6 +1,6 @@
 <script setup lang="ts">
-import PlayerTable from "@/components/PlayerTable.vue";
 import config from "../config.json"
+import PlayerData from "@/components/PlayerData.vue";
 </script>
 
 <template>
@@ -8,18 +8,12 @@ import config from "../config.json"
   <hr class="text-orange-500">
 
   <Suspense>
-    <div id="players_table">
-      <PlayerTable></PlayerTable>
-    </div>
+    <PlayerData></PlayerData>
   </Suspense>
 
 </template>
 
 <style scoped>
-#players_table {
-  margin-top: 60px;
-}
-
 #header {
   text-align: center;
   margin-top: 30px;
