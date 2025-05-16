@@ -15,7 +15,7 @@ for (const p of player_names) {
   const account = p[0];
   const name = p[1];
   const api_data = await (await fetch(`https://api.chess.com/pub/player/${account}/stats`)).json();
-  players.push(new Player(name, api_data));
+  players.push(new Player(name, account, api_data));
 }
 
 // Sorting for Rapid mode

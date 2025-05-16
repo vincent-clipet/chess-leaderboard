@@ -1,6 +1,7 @@
 class PlayerStats {
 
     name: string;
+    account: string;
     mode: string;
     current_rating: number;
     best_rating: number;
@@ -10,8 +11,9 @@ class PlayerStats {
     ratio_wl: number;
     rank: number;
 
-    constructor(name: string, mode: string, current_rating: number, best_rating: number, win: number, lose: number, draw: number) {
+    constructor(name: string, account: string, mode: string, current_rating: number, best_rating: number, win: number, lose: number, draw: number) {
         this.name = name;
+        this.account = account;
         this.mode = mode;
         this.current_rating = current_rating;
         this.best_rating = best_rating;

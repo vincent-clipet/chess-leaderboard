@@ -2,16 +2,19 @@ import PlayerStats from "@/types/PlayerStats.ts";
 
 class Player {
     name: string;
+    account: string;
 
     best: PlayerStats;
     rapid: PlayerStats;
     bullet: PlayerStats;
 
-    constructor(name: string, api_data: any) {
+    constructor(name: string, account: string, api_data: any) {
         this.name = name;
+        this.account = account;
 
         this.rapid = new PlayerStats(
             name,
+            account,
             "rapid",
             api_data.chess_rapid?.last?.rating || 0,
             api_data.chess_rapid?.best?.rating || 0,
@@ -22,6 +25,7 @@ class Player {
 
         this.bullet = new PlayerStats(
             name,
+            account,
             "bullet",
             api_data.chess_bullet?.last?.rating || 0,
             api_data.chess_bullet?.best?.rating || 0,
@@ -32,6 +36,7 @@ class Player {
 
         this.best = new PlayerStats(
             name,
+            account,
             "best",
             Math.max(this.rapid.current_rating, this.bullet.current_rating),
             Math.max(this.rapid.best_rating, this.bullet.best_rating),

@@ -28,7 +28,11 @@ defineProps<{
     <TableBody>
       <TableRow v-for="player in table_data" class="text-lg">
         <TableCell class="text-center">{{ player.rank }}</TableCell>
-        <TableCell class="text-center text-blue-400">{{ player.name }}</TableCell>
+        <TableCell class="text-center text-blue-400">
+          <a :href="`https://www.chess.com/member/${player.account}`" target="_blank">
+            {{ player.name }}
+          </a>
+        </TableCell>
         <TableCell class="text-center font-bold text-orange-400">{{ player.current_rating }}</TableCell>
         <TableCell class="text-center">
           <span> {{ player.best_rating }}</span>
