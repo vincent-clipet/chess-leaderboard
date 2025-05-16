@@ -23,6 +23,9 @@ class PlayerStats {
         if (this.win && this.lose) {
             this.ratio_wl = Number((100 * this.win / (this.win + this.lose)).toFixed(0));
         }
+        if (this.best_rating === 0 && this.current_rating > 0) {
+            this.best_rating = this.current_rating;
+        }
     }
 }
 

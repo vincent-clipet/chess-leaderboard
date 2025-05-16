@@ -13,7 +13,7 @@ class Player {
         this.rapid = new PlayerStats(
             name,
             "rapid",
-            api_data.chess_rapid?.last?.rating ?? 0,
+            api_data.chess_rapid?.last?.rating || 0,
             api_data.chess_rapid?.best?.rating || 0,
             api_data.chess_rapid?.record?.win || 0,
             api_data.chess_rapid?.record?.lose || 0,
@@ -23,7 +23,7 @@ class Player {
         this.bullet = new PlayerStats(
             name,
             "bullet",
-            api_data.chess_bullet?.last?.rating ?? 0,
+            api_data.chess_bullet?.last?.rating || 0,
             api_data.chess_bullet?.best?.rating || 0,
             api_data.chess_bullet?.record?.win || 0,
             api_data.chess_bullet?.record?.lose || 0,
