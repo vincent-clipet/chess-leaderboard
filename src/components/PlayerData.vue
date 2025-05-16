@@ -14,21 +14,21 @@ for (const p of config.players_names) {
 }
 
 // Sorting for Rapid mode
-const players_rapid = [...players];
+const players_rapid = [...players].filter(e => e.rapid.win !== 0 || e.rapid.lose !== 0 || e.rapid.draw !== 0);
 players_rapid.sort((a, b) => b.rapid.current_rating - a.rapid.current_rating);
 for (let rank = 1; rank <= players_rapid.length; rank++) {
   players_rapid[rank - 1].rapid.rank = rank;
 }
 
 // Sorting for Bullet mode
-const players_bullet = [...players];
+const players_bullet = [...players].filter(e => e.bullet.win !== 0 || e.bullet.lose !== 0 || e.bullet.draw !== 0);
 players_bullet.sort((a, b) => b.bullet.current_rating - a.bullet.current_rating);
 for (let rank = 1; rank <= players_bullet.length; rank++) {
   players_bullet[rank - 1].bullet.rank = rank;
 }
 
 // Sorting for Best overall
-const players_best = [...players];
+const players_best = [...players].filter(e => e.best.win !== 0 || e.best.lose !== 0 || e.best.draw !== 0);
 players_best.sort((a, b) => b.best.current_rating - a.best.current_rating);
 for (let rank = 1; rank <= players_best.length; rank++) {
   players_best[rank - 1].best.rank = rank;
