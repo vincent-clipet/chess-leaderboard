@@ -20,9 +20,17 @@ class PlayerStats {
         this.draw = draw;
         this.rank = 999;
         this.ratio_wl = 0;
-        if (this.win && this.lose) {
+
+        // Calculate the W/L ratio
+        if (this.win > 0 && this.lose > 0) {
             this.ratio_wl = Number((100 * this.win / (this.win + this.lose)).toFixed(0));
+        } else if (this.win > 0 && this.lose === 0) {
+            this.ratio_wl = 100;
+        } else if (this.win === 0 && this.lose > 0) {
+            this.ratio_wl = 0;
         }
+
+        // The API doesn't always send the best rating, so we use the current rating instead
         if (this.best_rating === 0 && this.current_rating > 0) {
             this.best_rating = this.current_rating;
         }

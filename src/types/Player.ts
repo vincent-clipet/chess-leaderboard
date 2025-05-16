@@ -16,7 +16,7 @@ class Player {
             api_data.chess_rapid?.last?.rating || 0,
             api_data.chess_rapid?.best?.rating || 0,
             api_data.chess_rapid?.record?.win || 0,
-            api_data.chess_rapid?.record?.lose || 0,
+            api_data.chess_rapid?.record?.loss || 0,
             api_data.chess_rapid?.record?.draw || 0,
         )
 
@@ -26,7 +26,7 @@ class Player {
             api_data.chess_bullet?.last?.rating || 0,
             api_data.chess_bullet?.best?.rating || 0,
             api_data.chess_bullet?.record?.win || 0,
-            api_data.chess_bullet?.record?.lose || 0,
+            api_data.chess_bullet?.record?.loss || 0,
             api_data.chess_bullet?.record?.draw || 0,
         )
 
