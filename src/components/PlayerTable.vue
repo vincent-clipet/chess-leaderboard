@@ -12,9 +12,9 @@ for (const p of config.players_names) {
   const api_data = await (await fetch(`https://api.chess.com/pub/player/${account}/stats`)).json();
   const current_rating = api_data.chess_rapid.last.rating;
   const best_rating = api_data.chess_rapid.best.rating;
-  const win = api_data.chess_rapid.record.win;
-  const lose = api_data.chess_rapid.record.loss;
-  const draw = api_data.chess_rapid.record.draw;
+  const win = api_data.chess_rapid?.record?.win || api_data.chess_bullet?.record?.win;
+  const lose = api_data.chess_rapid?.record?.loss || api_data.chess_bullet?.record?.loss;
+  const draw = api_data.chess_rapid?.record?.draw || api_data.chess_bullet?.record?.draw;
   players.push(new Player(name, current_rating, best_rating, win, lose, draw));
 }
 
