@@ -12,11 +12,11 @@ const players: Player[] = [];
 const player_names = [
   ["totoalamer", "Mathieu"],
   ["vince_f4e", "Vincent"],
-  ["trouducchess", "Maxime"],
+  ["TROUDUCCHESS", "Maxime"],
   ["xabroa2", "Xavier"],
-  ["thomas-caloin", "Thomas"],
+  ["THOMAS-CALOIN", "Thomas"],
   ["felixscout", "Félix"],
-  ["constaaaaaaant", "Constant"],
+  ["Constaaaaaaant", "Constant"],
   ["lucas59176800", "Lucas"],
 ];
 
@@ -66,18 +66,18 @@ for (let rank = 1; rank <= players_best.length; rank++) {
       <Tab value="2">Bullet</Tab>
       <Tab value="3">Blitz</Tab>
     </TabList>
-    <TabPanels>
+    <TabPanels class="players_table">
       <TabPanel value="0">
-        <PlayerTable :table_data="players_best.map(e => e.best)" class="players_table"></PlayerTable>
+        <PlayerTable :table_data="players_best.map(e => e.best)"></PlayerTable>
       </TabPanel>
       <TabPanel value="1">
-        <PlayerTable :table_data="players_rapid.map(e => e.rapid)" class="players_table"></PlayerTable>
+        <PlayerTable :table_data="players_rapid.map(e => e.rapid)"></PlayerTable>
       </TabPanel>
       <TabPanel value="2">
-        <PlayerTable :table_data="players_bullet.map(e => e.bullet)" class="players_table"></PlayerTable>
+        <PlayerTable :table_data="players_bullet.map(e => e.bullet)"></PlayerTable>
       </TabPanel>
       <TabPanel value="3">
-        <PlayerTable :table_data="players_blitz.map(e => e.blitz)" class="players_table"></PlayerTable>
+        <PlayerTable :table_data="players_blitz.map(e => e.blitz)"></PlayerTable>
       </TabPanel>
     </TabPanels>
   </Tabs>
@@ -90,5 +90,6 @@ for (let rank = 1; rank <= players_best.length; rank++) {
 
 .players_table {
   margin-top: 10px;
+  padding: 0;
 }
 </style>

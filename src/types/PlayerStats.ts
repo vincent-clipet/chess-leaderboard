@@ -10,6 +10,7 @@ class PlayerStats {
     draw: number;
     ratio_wl: number;
     rank: number;
+    total_played: number;
 
     constructor(name: string, account: string, mode: string, current_rating: number, best_rating: number, win: number, lose: number, draw: number) {
         this.name = name;
@@ -22,6 +23,7 @@ class PlayerStats {
         this.draw = draw;
         this.rank = 999;
         this.ratio_wl = 0;
+        this.total_played = win + lose + draw;
 
         // Calculate the W/L ratio
         if (this.win > 0 && this.lose > 0) {
