@@ -124,6 +124,7 @@ if (api_data && api_error_code > 0) {
     responsive: true,
     maintainAspectRatio: false,
     aspectRatio: 0.8,
+    pointRadius: 0,
     plugins: {
       tooltips: {
         mode: 'index',
@@ -156,6 +157,7 @@ if (api_data && api_error_code > 0) {
     responsive: true,
     maintainAspectRatio: false,
     aspectRatio: 0.8,
+    pointRadius: 0,
     plugins: {
       tooltips: {
         mode: 'index',
@@ -229,7 +231,7 @@ if (api_data && api_error_code > 0) {
   flex-direction: row;
 }
 .flexbox > * {
-  width: 24%;
-  height: 80%;
+  /*width: 24%;*/
+  margin-right: 20px;
 }
 </style>
