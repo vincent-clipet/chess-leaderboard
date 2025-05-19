@@ -1,7 +1,12 @@
 <script setup lang="ts">
 import Player from "../types/Player.ts"
 import PlayerTable from "@/components/PlayerTable.vue";
-import {Tabs, TabsContent, TabsList, TabsTrigger,} from '@/components/ui/tabs'
+
+import Tabs from 'primevue/tabs';
+import TabList from 'primevue/tablist';
+import Tab from 'primevue/tab';
+import TabPanels from 'primevue/tabpanels';
+import TabPanel from 'primevue/tabpanel';
 
 const players: Player[] = [];
 const player_names = [
@@ -53,45 +58,37 @@ for (let rank = 1; rank <= players_best.length; rank++) {
 </script>
 
 <template>
-  <Tabs default-value="best">
 
-    <TabsList id="tabs_list" class="grid w-full grid-cols-4">
-      <TabsTrigger value="best">Global</TabsTrigger>
-      <TabsTrigger value="rapid">Rapid</TabsTrigger>
-      <TabsTrigger value="bullet">Bullet</TabsTrigger>
-      <TabsTrigger value="blitz">Blitz</TabsTrigger>
-    </TabsList>
-
-    <TabsContent value="best">
-      <div class="players_table">
-        <PlayerTable :table_data="players_best.map(e => e.best)"></PlayerTable>
-      </div>
-    </TabsContent>
-    <TabsContent value="rapid">
-      <div class="players_table">
-        <PlayerTable :table_data="players_rapid.map(e => e.rapid)"></PlayerTable>
-      </div>
-    </TabsContent>
-    <TabsContent value="bullet">
-      <div class="players_table">
-        <PlayerTable :table_data="players_bullet.map(e => e.bullet)"></PlayerTable>
-      </div>
-    </TabsContent>
-    <TabsContent value="blitz">
-      <div class="players_table">
-        <PlayerTable :table_data="players_blitz.map(e => e.blitz)"></PlayerTable>
-      </div>
-    </TabsContent>
-
+  <Tabs value="0" id="tabs_list">
+    <TabList>
+      <Tab value="0">Global</Tab>
+      <Tab value="1">Rapid</Tab>
+      <Tab value="2">Bullet</Tab>
+      <Tab value="3">Blitz</Tab>
+    </TabList>
+    <TabPanels>
+      <TabPanel value="0">
+        <PlayerTable :table_data="players_best.map(e => e.best)" class="players_table"></PlayerTable>
+      </TabPanel>
+      <TabPanel value="1">
+        <PlayerTable :table_data="players_rapid.map(e => e.rapid)" class="players_table"></PlayerTable>
+      </TabPanel>
+      <TabPanel value="2">
+        <PlayerTable :table_data="players_bullet.map(e => e.bullet)" class="players_table"></PlayerTable>
+      </TabPanel>
+      <TabPanel value="3">
+        <PlayerTable :table_data="players_blitz.map(e => e.blitz)" class="players_table"></PlayerTable>
+      </TabPanel>
+    </TabPanels>
   </Tabs>
 </template>
 
 <style scoped>
 #tabs_list {
-  margin-top: 60px;
+  margin-top: 40px;
 }
 
 .players_table {
-  margin-top: 20px;
+  margin-top: 10px;
 }
 </style>
