@@ -17,8 +17,8 @@ let chartData_rating = {};
 let chartOptions_rating = {};
 let chartData_accuracy = {};
 let chartOptions_accuracy = {};
-let chartData_mode = {};
-let chartOptions_mode = {};
+// let chartData_mode = {};
+// let chartOptions_mode = {};
 let chartData_endings_lose = {};
 let chartData_endings_draw = {};
 let chartOptions_endings = {};
@@ -37,7 +37,7 @@ try {
 }
 
 if (api_data && api_error_code > 0) {
-  games = api_data.games.filter(e => e.rated === true).slice(-100).map(e => {
+  games = api_data.games.filter((e: any) => e.rated === true).slice(-100).map((e: any) => {
     if (e.white.username === props.playerStats.account) {
       return new Game(e.time_class, e.time_control, e.white.rating, e.white.result, e.accuracies?.white ?? 0);
     } else if (e.black.username === props.playerStats.account) {
@@ -72,26 +72,26 @@ if (api_data && api_error_code > 0) {
     ]
   };
 
-  chartData_mode = {
-    labels: ['Rapid', 'Bullet', 'Blitz'],
-    datasets: [
-      {
-        data: [
-          games.filter(e => e.mode === "rapid").length,
-          games.filter(e => e.mode === "bullet").length,
-          games.filter(e => e.mode === "blitz").length,
-        ],
-      }
-    ]
-  }
+  // chartData_mode = {
+  //   labels: ['Rapid', 'Bullet', 'Blitz'],
+  //   datasets: [
+  //     {
+  //       data: [
+  //         games.filter(e => e.mode === "rapid").length,
+  //         games.filter(e => e.mode === "bullet").length,
+  //         games.filter(e => e.mode === "blitz").length,
+  //       ],
+  //     }
+  //   ]
+  // }
 
-  const tmp_endings_lose = [
-    ['Echec et mat', games.filter(e => e.result === "checkmated").length],
-    ['Fin du temps', games.filter(e => e.result === "timeout").length],
-    ['Capitulation', games.filter(e => e.result === "resigned").length],
-    ['Perdu', games.filter(e => e.result === "lose").length],
-    ['Pas assez de pièces', games.filter(e => e.result === "insufficient").length],
-    ['Rage-quit / déconnexion', games.filter(e => e.result === "abandoned").length],
+  const tmp_endings_lose: [string, number][] = [
+    ['Echec et mat', games.filter(e => e.result === "checkmated").length] as [string, number],
+    ['Fin du temps', games.filter(e => e.result === "timeout").length] as [string, number],
+    ['Capitulation', games.filter(e => e.result === "resigned").length] as [string, number],
+    ['Perdu', games.filter(e => e.result === "lose").length] as [string, number],
+    ['Pas assez de pièces', games.filter(e => e.result === "insufficient").length] as [string, number],
+    ['Rage-quit / déconnexion', games.filter(e => e.result === "abandoned").length] as [string, number],
   ].filter(e => e[1] > 0);
 
   chartData_endings_lose = {
@@ -103,12 +103,12 @@ if (api_data && api_error_code > 0) {
     ]
   }
 
-  const tmp_endings_draw = [
-    ['Proposition', games.filter(e => e.result === "agreed").length],
-    ['Répétition', games.filter(e => e.result === "repetition").length],
-    ['Stalemate', games.filter(e => e.result === "stalemate").length],
-    ['Règle 50 mouvements', games.filter(e => e.result === "50move").length],
-    ['Pas assez de pièces + fin du temps', games.filter(e => e.result === "timevsinsufficient").length],
+  const tmp_endings_draw: [string, number][] = [
+    ['Proposition', games.filter(e => e.result === "agreed").length] as [string, number],
+    ['Répétition', games.filter(e => e.result === "repetition").length] as [string, number],
+    ['Stalemate', games.filter(e => e.result === "stalemate").length] as [string, number],
+    ['Règle 50 mouvements', games.filter(e => e.result === "50move").length] as [string, number],
+    ['Pas assez de pièces + fin du temps', games.filter(e => e.result === "timevsinsufficient").length] as [string, number],
   ].filter(e => e[1] > 0);
 
   chartData_endings_draw = {
@@ -184,16 +184,16 @@ if (api_data && api_error_code > 0) {
     }
   }
 
-  chartOptions_mode = {
-    plugins: {
-      legend: {
-        labels: {
-          cutout: '60%',
-          color: "white"
-        }
-      }
-    }
-  }
+  // chartOptions_mode = {
+  //   plugins: {
+  //     legend: {
+  //       labels: {
+  //         cutout: '60%',
+  //         color: "white"
+  //       }
+  //     }
+  //   }
+  // }
 
   chartOptions_endings = {
     responsive: false,
